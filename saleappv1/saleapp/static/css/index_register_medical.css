@@ -23,3 +23,7 @@ div.content > div.user-center-img > img {
     width: 95%;
     height: 95%;
 }
+
+div.register_medical {
+    background-color: lightslategrey;
+}

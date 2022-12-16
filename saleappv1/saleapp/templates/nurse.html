@@ -12,32 +12,41 @@
 
 <div class="content">
     <div class="nurse row">
-        <div class="nurse-left col-md-5 col-sm-12 text-center">
+        <div class="nurse-left col-md-4 col-sm-12 text-center">
 
             <div class="nurse-left-infor">
+                <div class="sub-content">
+                    <div class="user-center-img">
+                        <img style="border-radius: 50%" src="{{ current_user.anhDaiDien }}"
+                             alt="{{ current_user.tenUser }}">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5>{{ current_user.tenUser }}</h5>
+                        <h5>{{ current_user.user_role }}</h5>
+                        <h5 style="color: blue">ONLINE <i class="fas fa-toggle-on"></i></h5>
+                    </div>
+                </div>
+                <div class="bt-create form-floating mb-3">
+                    <input type="submit" value="Tạo danh sách" class="btn btn-info" name="create_list"/>
+                </div>
                 <table class="table">
                     <tr>
                         <th>Id</th>
-                        <th>Họ tên</th>
-                        <th>Số điện thoại</th>
-                        <th>Thêm</th>
+                        <th>Tên danh sách</th>
+                        <th>Ngày tạo</th>
                     </tr>
-                    {% for us in users %}
+                    {% for ds in diseases %}
                     <tr>
-                        <td>{{ us.id }}</td>
-                        <td>{{ us.tenUser }}</td>
-                        <td>{{ us.soDienThoai}}</td>
-                        <td>
-                            <input type="button" value="Thêm" class="btn btn-success"/>
-                        </td>
+                        <td>{{ ds.id }}</td>
+                        <td>{{ ds.tenBenh }}</td>
+                        <td>{{ ds.ngayKham }}</td>
                     </tr>
                     {% endfor %}
-
                 </table>
             </div>
         </div>
 
-        <div class="nurse-right col-md-7 col-sm-12">
+        <div class="nurse-right col-md-8 col-sm-12">
             <div>
                 <h2>DANH SÁCH KHÁM BỆNH</h2>
                 <hr>
@@ -60,10 +69,10 @@
                         <th>Ngày sinh</th>
                         <th>Địa chỉ</th>
                     </tr>
-                    {% for us in users %}
+                    {% for us in diseases %}
                     <tr>
                         <td>{{ us.id }}</td>
-                        <td>{{ us.tenUser }}</td>
+                        <td>{{ us.tenBenh }}</td>
                         {% if us.gioiTinh == True %}
                         <td>Nam</td>
                         {% else %}
@@ -71,9 +80,6 @@
                         {% endif %}
                         <td>{{ us.ngaySinh }}</td>
                         <td>{{ us.diaChi }}</td>
-                        <td>
-                            <input type="button" value="Xóa" class="btn btn-danger"/>
-                        </td>
                     </tr>
                     {% endfor %}
                 </table>

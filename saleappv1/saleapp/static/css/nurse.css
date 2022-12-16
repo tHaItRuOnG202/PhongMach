@@ -2,6 +2,10 @@ div.content {
     margin-top: 2%
 }
 
+div.sub-content {
+    display: flex;
+}
+
 div.nurse {
     text-align: center;
     border: solid;
@@ -15,7 +19,7 @@ div.nurse-left {
 div.nurse-left img {
     margin-top: 10%;
     border-radius: 50%;
-    width: 60%;
+    width: 65%;
 }
 
 div.nurse-left-infor {
@@ -70,4 +74,9 @@ div.confirm-info {
 
 .confirm-info {
     display: none;
+}
+
+div.user-center-img > img {
+    margin-top: 0;
+    margin-bottom: 20%;
 }
