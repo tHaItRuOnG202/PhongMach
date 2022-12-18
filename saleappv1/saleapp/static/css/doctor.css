@@ -86,7 +86,7 @@ div.m-name > label {
 div.m-name > div {
     width: 280%;
     background-color: white;
-    padding: 2%;
+    padding: 2%
 }
 
 div.m-symptom {
@@ -144,4 +144,18 @@ div.m-user > label {
 
 div.m-user > input {
     width: 245%;
+}
+
+div.m-quantity {
+    display: flex;
+    align-items: flex-end;
+}
+
+div.m-quantity > label {
+    width: 125%;
+    text-align: left;
+}
+
+div.m-quantity > input {
+    width: 320%;
 }
