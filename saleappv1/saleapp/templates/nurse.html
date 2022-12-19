@@ -20,7 +20,7 @@
                     </div>
                     <div class="card-body text-center">
                         <h5>{{ current_user.tenUser }}</h5>
-                        <h5>{{ current_user.user_role }}</h5>
+                        <h5>{{ current_user.user_role.name }}</h5>
                         <h5 style="color: blue">ONLINE <i class="fas fa-toggle-on"></i></h5>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
 
         <div class="nurse-right col-md-8 col-sm-12">
             <div>
-                <h2>DANH SÁCH ĐĂNG KÝ KHÁM BỆNH</h2>
+                <h2 style="font-weight: bold">DANH SÁCH ĐĂNG KÝ KHÁM BỆNH</h2>
                 <hr>
                 <div class="medical-date">
                     <div class="medical-date-1">

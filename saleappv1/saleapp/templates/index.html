@@ -20,7 +20,7 @@
                 </div>
                 <div class="card-body text-center">
                     <h4 class="card-title">{{ current_user.tenUser }}</h4>
-                    <h4 class="card-title">{{ current_user.user_role }}</h4>
+                    <h4 class="card-title">{{ current_user.user_role.name }}</h4>
                     <h4 class="card-title">{{ current_user.ngaySinh }}</h4>
                     <h4 style="color: blue">ONLINE <i class="fas fa-toggle-on"></i></h4>
                 </div>
@@ -38,7 +38,7 @@
         </div>
         <div class="user-right col-sm-5">
             <div class="content">
-                <h2>ĐĂNG KÝ KHÁM BỆNH</h2>
+                <h2 style="font-weight: bold">ĐĂNG KÝ KHÁM BỆNH</h2>
                 <p>Quý khách vui lòng điền thông tin khám bệnh</p>
                 <div class="medical-register">
                     <form method="post" enctype="multipart/form-data" action="user_dang_ky_kham">

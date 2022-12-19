@@ -5,12 +5,12 @@
     <link href="{{ url_for('static', filename='css/cashier.css') }}" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet"/>
 </head>
-<h1 class=cashier>THANH TOÁN HÓA ĐƠN</h1>
+<h1 class="cashier" style="font-weight: bold">THANH TOÁN HÓA ĐƠN</h1>
 <hr>
 
 <!--action là đường dẫn của cái hàm thực thi-->
-<form method="post" enctype="multipart/form-data" action="/cashier">
-    <div class="">
+<form class="thanh_toan" method="post" enctype="multipart/form-data" action="/cashier">
+    <div class="thanh_toan_1">
         <input type="text" class="form-control" required id="submit_phieuKham_id"
                placeholder="Nhập mã phiếu khám của bệnh nhân..."
                name="submit_phieuKham_id">
@@ -20,11 +20,10 @@
     </div>
 </form>
 
-
 <div class="r-content">
     <div class="r-sub-content mb-0">
         <div class="row r-title" style="font-weight: bold">
-            <p>HOÁ ĐƠN</p>
+            <p>HÓA ĐƠN</p>
         </div>
         <hr>
 
@@ -33,7 +32,7 @@
                 <div class="col-md-6 mt-2 mb-2">
                     Họ tên:
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mt-2 mb-2">
                     Ngày khám:
                 </div>
             </div>
@@ -57,5 +56,6 @@
 
     </div>
 </div>
+
 
 {% endblock %}

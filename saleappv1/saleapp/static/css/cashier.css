@@ -34,3 +34,15 @@ div.r-sub-content-1 > div.row {
 div.r-sub-content-1 > div.row > div {
     font-size: 20px;
 }
+
+form.thanh_toan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.thanh_toan_1 {
+    width: 70%;
+    margin-right: 3%;
+}
+
