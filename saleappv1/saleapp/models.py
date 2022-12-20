@@ -74,7 +74,7 @@ class User(BaseModel, UserMixin):
 class HoaDon(BaseModel):
     tenHoaDon = Column(String(50), default="Hóa đơn", nullable=False)
     # ngayKham = Column(DateTime, default=datetime.now())
-    ngayKham = Column(Date, default= datetime.now())
+    ngayKham = Column(Date, default=datetime.now())
     tongTien = Column(Float, nullable=True)
     user_id = Column("User", ForeignKey(User.id), nullable=False)
 
@@ -112,7 +112,6 @@ class ChiTietDanhSachKham(BaseModel):
     user_id = Column("User", ForeignKey(User.id), nullable=False)
 
 
-
 class Benh(BaseModel):
     tenBenh = Column(String(50), nullable=True)
     chiTietLichSuBenh = relationship("ChiTietLichSuBenh", backref="Benh", lazy=True)
@@ -140,27 +139,36 @@ if __name__ == '__main__':
         db.drop_all()
         db.create_all()
 
-        # import hashlib
-        # password = str(hashlib.md5('123456'.encode('utf-8')).hexdigest())
+        import hashlib
 
-        u1 = User(tenUser="Trần Đăng Tuấn", tenDangNhap="admin", matKhau="123456", gioiTinh=True, soDienThoai = "0123", diaChi="TPHCM",
+        password = 123
+        password_admin = 123456
+        password = str(hashlib.md5('123'.encode('utf-8')).hexdigest())
+        password_admin = str(hashlib.md5('123456'.encode('utf-8')).hexdigest())
+
+        u1 = User(tenUser="Trần Đăng Tuấn", tenDangNhap="admin", matKhau=password_admin, gioiTinh=True,
+                  soDienThoai="0123", diaChi="TPHCM",
                   anhDaiDien="http://it.ou.edu.vn/asset/ckfinder/userfiles/5/images/giang_vien/Vinh_2.jpg",
                   user_role=UserRole.ADMIN)
-        u2 = User(tenUser="Nguyễn Thị Phương Trang", tenDangNhap="cashier", matKhau="123", gioiTinh=False, soDienThoai = "0124",
+        u2 = User(tenUser="Nguyễn Thị Phương Trang", tenDangNhap="cashier", matKhau=password, gioiTinh=False,
+                  soDienThoai="0124",
                   diaChi="TPHCM",
                   anhDaiDien="http://it.ou.edu.vn/asset/ckfinder/userfiles/5/images/giang_vien/PTrang1.jpg",
                   user_role=UserRole.CASHIER)
-        u3 = User(tenUser="Nguyễn Thị Mai Trang", tenDangNhap="nurse", matKhau="123", gioiTinh=False, soDienThoai = "0125", diaChi="TPHCM",
+        u3 = User(tenUser="Nguyễn Thị Mai Trang", tenDangNhap="nurse", matKhau=password, gioiTinh=False,
+                  soDienThoai="0125", diaChi="TPHCM",
                   anhDaiDien="http://it.ou.edu.vn/asset/ckfinder/userfiles/5/images/MaiTrang-ouitN(1).png",
                   user_role=UserRole.NURSE)
-        u4 = User(tenUser="Hồ Quang Khải", tenDangNhap="doctor", matKhau="123", gioiTinh=True, soDienThoai = "0126", diaChi="TPHCM",
+        u4 = User(tenUser="Hồ Quang Khải", tenDangNhap="doctor", matKhau=password, gioiTinh=True, soDienThoai="0126",
+                  diaChi="TPHCM",
                   anhDaiDien="http://it.ou.edu.vn/asset/ckfinder/userfiles/5/images/giang_vien/Khai_1.jpg",
                   user_role=UserRole.DOCTOR)
-        u5 = User(tenUser="Lưu Quang Phương", tenDangNhap="user", matKhau="123", gioiTinh=True, soDienThoai = "0127", diaChi="TPHCM",
+        u5 = User(tenUser="Lưu Quang Phương", tenDangNhap="user", matKhau=password, gioiTinh=True, soDienThoai="0127",
+                  diaChi="TPHCM",
                   anhDaiDien="http://it.ou.edu.vn/asset/ckfinder/userfiles/5/images/giang_vien/Phuong_2.jpg",
                   user_role=UserRole.USER)
 
-        u6 = User(tenUser="Đàng Sỹ Tuân", tenDangNhap="user1", matKhau="123", gioiTinh=True, soDienThoai="0128",
+        u6 = User(tenUser="Đàng Sỹ Tuân", tenDangNhap="user1", matKhau=password, gioiTinh=True, soDienThoai="0128",
                   diaChi="Phú Nhuận",
                   anhDaiDien="http://it.ou.edu.vn/asset/ckfinder/userfiles/5/images/giang_vien/Phuong_2.jpg",
                   user_role=UserRole.USER)
@@ -235,3 +243,4 @@ if __name__ == '__main__':
         # db.session.add_all([hd1, hd2, hd3, hd4, hd5, hd6, hd7, hd8])
 
         db.session.commit()
+

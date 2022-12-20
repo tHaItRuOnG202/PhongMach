@@ -5,7 +5,7 @@
     <link href="{{ url_for('static', filename='css/cashier.css') }}" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet"/>
 </head>
-<h1 class="cashier" style="font-weight: bold">THANH TOÁN HÓA ĐƠN</h1>
+<h1 class=cashier>THANH TOÁN HÓA ĐƠN</h1>
 <hr>
 
 <!--action là đường dẫn của cái hàm thực thi-->
@@ -18,44 +18,82 @@
     <div class="mt-1 mb-1">
         <button type="submit" class="btn btn-primary">Thanh toán</button>
     </div>
+
 </form>
+{% if err_msg %}
+<div class="alert alert-danger">
+    {{ err_msg }}
+</div>
+{% endif %}
 
 <div class="r-content">
     <div class="r-sub-content mb-0">
+
         <div class="row r-title" style="font-weight: bold">
             <p>HÓA ĐƠN</p>
         </div>
         <hr>
-
+        {% if hoa_don %}
         <div class="r-sub-content-1">
             <div class="row">
                 <div class="col-md-6 mt-2 mb-2">
-                    Họ tên:
+                    Họ tên: {{ hoa_don[0][0] }}
                 </div>
                 <div class="col-md-6 mt-2 mb-2">
-                    Ngày khám:
+                    Ngày khám: {{ hoa_don[0][1] }}
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6 mt-2 mb-2">
-                    Tiền khám:
+                    Tiền khám: 100.000 VNĐ
                 </div>
                 <div class="col-md-6 mt-2 mb-2">
-                    Tiền thuốc:
+                    Tiền thuốc: {{ "{:,.0f}".format(hoa_don[0][2] - 100000) }} VNĐ
                 </div>
             </div>
 
             <hr>
-            <div class="row">
+            <div class="row text-center">
                 <div class="col-md-12 mt-2 mb-2" style="font-weight: bold">
-                    Tổng tiền:
+                    Tổng tiền: {{ "{:,.0f}".format(hoa_don[0][2]) }} VNĐ
                 </div>
             </div>
         </div>
-
+        {% endif %}
     </div>
 </div>
 
+<div class="receipt-form">
+    <div class="row r-title mt-3" style="font-weight: bold">
+        <p>DANH SÁCH HÓA ĐƠN</p>
+    </div>
+    <hr>
+
+    <div class="receipt-table">
+        <table class="table">
+            <tr>
+                <th>Mã hóa đơn</th>
+                <th>Mã phiếu khám</th>
+                <th>Họ tên</th>
+                <th>Ngày khám</th>
+                <th>Tiền khám</th>
+                <th>Tiền thuốc</th>
+                <th>Tổng tiền</th>
+            </tr>
+            {% for hd in danh_sach_hoa_don %}
+            <tr>
+                <td>{{ hd.0 }}</td>
+                <td>{{ hd.1 }}</td>
+                <td>{{ hd.2 }}</td>
+                <td>{{ hd.3 }}</td>
+                <td>100.000 VND</td>
+                <td>{{ "{:,.0f}".format (hd.4 - 100000) }} VND</td>
+                <td>{{ "{:,.0f}".format (hd.4) }} VND</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 
 {% endblock %}
